@@ -1,0 +1,64 @@
+#include <iostream>
+
+const int strsize = 80;
+struct bop {
+    char fullname[strsize];// real name
+    char title[strsize];// job title
+    char bopname[strsize];// secret BOP name
+    int  preference;// 0 = fullname, 1 = title, 2 = bopname
+};
+
+int main()
+{
+    using namespace std;
+    char ch;
+    bop array[5] = { {"Wimp Macho", "FAT", "DEEPS", 0},
+                     {"Raki Rhodes", "Godd", "Higher", 1},
+                     {"Celia Laiter", "Bad", "Idonknow", 2},
+                     {"Hoppy Hipman", "MIPS", "DDSAA", 0},
+                     {"Pat Hand", "LOOPY", "fkldaf", 2}};
+
+    cout << "Benevolent Order of Programmers Report\n"
+         << "a. display by name\tb. display by title\n"
+         << "c. display by bopname\td. display by preference\n"
+         << "q. quit\n"
+         << "Enter your choice: ";
+    cin >> ch;
+    while ( ch != 'q')
+    {
+        switch(ch)
+        {
+        case 'a':
+            for ( int i = 0; i < 5; i++)
+            cout << array[i].fullname << endl;
+            break;
+        case 'b':
+            for ( int i = 0; i < 5; i++)
+            cout << array[i].title << endl;
+            break;
+        case 'c':
+            for ( int i = 0; i < 5; i++)
+            cout << array[i].bopname << endl;
+            break;
+        case 'd':
+            for ( int i = 0; i < 5; i++)
+            {
+            if ( array[i].preference == 0)
+                cout << array[i].fullname << endl;
+            else if ( array[i].preference == 1)
+                cout << array[i].title << endl;
+            else
+                cout << array[i].bopname << endl;
+            }
+            break;
+        case 'q':
+            cout << "Bye!";
+            break;
+        default:
+            cout << "Please enter a a, b, c, d or q for quit.\n";
+        }
+    cout << "Next choice: ";
+    cin >> ch;
+    }
+    return 0;
+}
