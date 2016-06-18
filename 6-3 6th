@@ -1,0 +1,39 @@
+#include <iostream>
+
+const int SIZE = 10;
+
+int main()
+{
+    using namespace std;
+    char ch;
+    bool match = false;
+    cout << "Please enter one of the following choices:\n"
+         << "c) carnivore\tp) pianist\nt) tree\tg) game\n";
+
+    while ( !match && (cin >> ch) )
+    {
+    switch (ch)
+    {
+    case 'c':
+        cout << "carnivore\n";
+        match = true;
+        break;
+    case 'p':
+        cout << "pianist\n";
+        match = true;
+        break;
+    case 't':
+        cout << "a maple is a tree.\n";
+        match = true;
+        break;
+    case 'g':
+        cout << "play a game\n";
+        match = true;
+        break;
+    default :
+        cout << "Please enter a c, p ,t or g: ";
+        continue;
+    }
+    }
+    return 0;
+}
