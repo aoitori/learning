@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main()
+{
+    using namespace std;
+    long in, tvarps;
+
+    cout << "Enter your incomes: ";
+    while ( (cin >> in) && !(in < 0))
+    {
+        if ( in > 35000 || in == 35000)
+            tvarps = 1000 + 3000 + 0.2 * ( in - 35000);
+        else if ( in > 20000)
+            tvarps = 1000 + 3000;
+        else if ( in > 5000 || in == 20000)
+            tvarps = 1000;
+        else
+            tvarps = 0;
+        cout << "Your tax owed is " << tvarps << endl;
+        cout << "Enter your incomes: ";
+    }
+    cout << "Bye!!!";
+    
+    return 0;
+}
