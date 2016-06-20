@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+int main ()
+{
+    using namespace std;
+    char ch;
+    string word;
+    int vowels = 0, consonats = 0, others = 0;
+
+    cout << "Enter words (q to quit):\n";
+
+    while ( (cin >> word) && word != "q" )
+    {
+        if ( isalpha(word[0]))
+    {
+        word[0] = tolower( word[0]);
+        switch ( word[0])
+        {
+        case 'a':
+        case 'i':
+        case 'e':
+        case 'o':
+        case 'u':
+            vowels++;
+            break;
+        default:
+            consonats++;
+            break;
+        }
+    }
+    else
+        ++others;
+    }
+
+    cout << vowels << " words beginning with vowels\n"
+         << consonats << " words beginning with consonats\n"
+         << others << " others\n";
+
+    return 0;
+}
