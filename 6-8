@@ -1,0 +1,36 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <cctype>
+
+const int SIZE = 80;
+
+int main ()
+{
+    using namespace std;
+    ifstream inFile;
+    char filename[SIZE];
+    int count = 0;
+    char ch;
+
+    cout << "Enter your file name: ";
+    cin.getline( filename, SIZE);
+    inFile.open( filename);
+    if ( !inFile.is_open())
+    {
+        cout << "Could not open the file.\n"
+             << "Programming terminated.\n";
+        exit(EXIT_FAILURE);
+    }
+
+    while ( inFile >> ch)
+    {
+        if ( isalnum(ch))
+            ++count;
+    }
+
+    cout << count << " numbers of characters in your file.\n";
+    inFile.close();
+
+    return 0;
+}
