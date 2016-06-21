@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cstdlib>
+
+using namespace std;
+const int strsize = 80;
+struct contribution
+{
+    string name;
+    double money;
+};
+
+int main()
+{
+    ifstream inFile;
+    char filename[strsize];
+    string str;
+    int members, m = -1, n = -1;
+
+    cout << "Enter your file name: ";
+    cin.getline( filename, strsize);
+    inFile.open( filename);
+
+    if ( !inFile.is_open())
+    {
+        cout << "Could not open the file.\n";
+        cout << "Programming terminated.\n";
+        exit(EXIT_FAILURE);
+    }
+
+    inFile >> members;
+    inFile.get();
+    contribution *p = new contribution[members];
+    string *bigger[members], *lower[members];
+
+    for (int i = 0; i < members; ++i)
+    {
+        getline( inFile, (p+i)->name);
+        cout << "The #" << i+1 << " name is " << (p+i)->name << endl;
+        inFile >> (p+i)->money;
+        inFile.get();
+        cout << "Contributions: " << (p+i)->money << endl;
+
+        if ( (p+i)->money < 10000)
+            {
+            ++n;
+            lower[n] = &(p+i)->name;
+            }
+        else
+        {
+            ++m;
+            bigger[m] = &(p+i)->name;
+        }
+    }
+    cout << "Grand Patrons\n" << "-----------\n";
+    if ( m < 0 )
+        cout << "none.\n";
+    else
+        {
+        for (int i = 0; !(m < i); i++)
+            cout << *bigger[i] << endl;
+    }
+
+    cout << "\nPatrons\n" << "----------\n";
+    if ( n < 0)
+        cout << "none.\n";
+
+    else
+        {
+        for (int i = 0; !(n < i); i++)
+            cout << *lower[i] << endl;
+    }
+    inFile.close();
+    delete []p;
+    return 0;
+}
