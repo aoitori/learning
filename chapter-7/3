@@ -1,0 +1,36 @@
+#include <iostream>
+
+struct box
+{
+    char maker[40];
+    float height;
+    float width;
+    float length;
+    float volume;
+};
+void product ( box *x);
+void display ( box x);
+
+int main ()
+{
+    box a = {"one", 10, 5, 20};
+    product(&a);
+    display(a);
+
+    return 0;
+}
+
+void product ( box *x)
+{
+    x->volume = x->height * x->width * x->length;
+}
+
+void display ( box x)
+{
+    using namespace std;
+    cout << "Box name: " << x.maker << endl
+         << "height: " << x.height << endl
+         << "width: " << x.width << endl
+         << "length: " << x.length << endl
+         << "volume: " << x.volume << endl;
+}
