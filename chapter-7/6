@@ -1,0 +1,53 @@
+#include <iostream>
+const int SIZE = 30;
+using namespace std;
+int Fill_array (double arr[], int size);
+void Show_array (const double arr[], int size);
+void Reverse_array (double arr[], int size, bool order);
+
+int main ()
+{
+    double a[SIZE];
+    bool order = true;
+    int entries;
+    entries = Fill_array( a, SIZE);
+    Show_array( a, entries);
+    Reverse_array( a, entries, order);
+    Show_array( a, entries);
+    return 0;
+}
+
+int Fill_array (double arr[], int size)
+{
+    int entries;
+    cout << "Plese Enter values (non-numeric to quit): ";
+    for ( entries = 0; entries < size; entries++)
+    {
+        if ( !(cin >> arr[entries]))
+            return entries;
+        cout << "Next is:";
+    }
+    return entries;
+}
+
+void Show_array (const double arr[], int size)
+{
+    cout << "You have entered " << size << " values.\n";
+    for (int i = 0; i < size; ++i)
+    {
+        cout << "#" << i+1 << ": " << arr[i] << "\n";
+    }
+    cout << "\n";
+}
+
+void Reverse_array (double arr[], int size, bool order)
+{
+    double temp;
+    if(order)
+        for (int i = 1, j = size - 2; i != j; ++i, --j )
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+}
