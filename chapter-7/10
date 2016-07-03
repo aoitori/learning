@@ -1,0 +1,50 @@
+#include <iostream>
+double calculate (double a, double b, double (*ptr[])(double x, double y));
+double add (double x, double y);
+double times (double x, double y);
+double divide (double x, double y);
+double decrease (double x, double y);
+
+int main ()
+{
+    using namespace std;
+    double x, y;
+    double (*pf[4])(double, double) = {add, times, divide, decrease};
+    cout << "Enter two numbers(non-numberic to exit): ";
+    while (cin >> x >> y)
+    {
+        if ( y == 0)
+        {
+            y = x;
+            x = 0;
+        }
+        double q = calculate (x, y, pf);
+        cout << "Result: " << q << endl;
+        cout << "Enter next two numbers: ";
+    }
+}
+
+double calculate (double a, double b, double (*ptr[])(double x, double y))
+{
+    return (ptr[0](a, b) + ptr[1](a, b) + ptr[2](a, b) + ptr[3](a, b));
+}
+
+double add (double x, double y)
+{
+    return x + y;
+}
+
+double times (double x, double y)
+{
+    return x * y;
+}
+
+double divide (double x, double y)
+{
+    return x / y;
+}
+
+double decrease (double x, double y)
+{
+    return x - y;
+}
