@@ -1,0 +1,24 @@
+#include <iostream>
+
+long double factorial ( int value);
+int main ()
+{
+    int value;
+    using namespace std;
+    cout << "Please enter a number: ";
+    while ( ( cin >> value) && value >= 0)
+    {
+        cout << "The factorial " << value << " is " << factorial(value);
+        cout << "\nNext number(q to quit): ";
+    }
+
+    return 0;
+}
+
+long double factorial ( int value)
+{
+    if ( value == 1 || value == 0)
+        return 1;
+
+    return value * factorial(value - 1);
+}
