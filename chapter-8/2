@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+struct CandyBar
+{
+    std::string brand;
+    double weight;
+    int calory;
+};
+CandyBar set (CandyBar &st, const char *p = "Millennium Munch", const double w = 2.85, const int c = 350);
+void show (const CandyBar &st);
+
+int main ()
+{
+    CandyBar candy;
+    set(candy);
+    show(candy);
+    std::cout << "#2\n";
+    set(candy, "wellllllll", 4.25, 500);
+    show(candy);
+
+    return 0;
+}
+
+CandyBar set (CandyBar &st, const char *p, const double w, const int c)
+{
+    st.brand = p;
+    st.weight = w;
+    st.calory = c;
+    return st;
+}
+
+void show (const CandyBar &st)
+{
+    using namespace std;
+    cout << "Name: " << st.brand << endl;
+    cout << "Weight: " << st.weight << endl;
+    cout << "Calory: " << st.calory << endl;
+}
