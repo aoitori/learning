@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstring>
+template <class T>
+T maxn (T a[], int num)
+{
+    T temp = a[0];
+    for (int i = 1; i < num; i++)
+    {
+        if (temp < a[i])
+            temp = a[i];
+    }
+    return temp;
+}
+
+template <> char* maxn (char* a[], int num)
+{
+    char* tt = a[0];
+    std::cout << "\nSpecialization:";
+    for (int i = 1; i < num; i++)
+    {
+        if(strlen(tt) < strlen(a[i]))
+            tt = a[i];
+    }
+    return tt;
+}
+
+int main ()
+{
+    using namespace std;
+    int a1[] = {1, 2, 3, 4, 5, 6};
+    double a2[] = {11.111, 22.222, 333.222, 44.55555, 666.8888};
+    char *p1 = "456456542", *p2 = "222", *p3 = "45554", *p4 = "664566", *p5= "1";
+    char *a3[5];
+    a3[0] = p1;
+    a3[1] = p2;
+    a3[2] = p3;
+    a3[3] = p4;
+    a3[5] = p5;
+    cout << "largest of a1: " << maxn(a1, 6);
+    cout << "\nlargest of a2: " << maxn(a2, 4);
+    char* ad = maxn(a3, 5);
+    cout << "\nlongest of a3: " << &ad << " " << ad;
+    return 0;
+}
