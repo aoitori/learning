@@ -1,0 +1,40 @@
+//arrobj.cpp -- functions with array objects
+#include <iostream>
+#include <array>
+#include <string>
+const int Seasons = 4;
+const char *Snames[Seasons] =
+    {"Spring", "Summer", "Fall", "Winter"};
+
+void fill(double *pa, const double *last);
+void show(const double *pa, const double *last);
+int main()
+{
+    double expenses[Seasons];
+    fill(expenses, &expenses[Seasons]);
+    show(expenses, (expenses+Seasons));
+    // std::cin.get();
+    // std::cin.get();
+    return 0;
+}
+
+void fill(double *pa, const double *last)
+{
+    for (int i = 0; &pa[i] < last; i++)
+    {
+        std::cout << "Enter " << Snames[i] << " expenses: ";
+        std::cin >> pa[i];
+    }
+}
+
+void show(const double *pa, const double *last)
+{
+    double total = 0.0;
+    std::cout << "\nEXPENSES\n";
+    for (int i = 0; (pa+i) < last; i++)
+    {
+        std::cout << Snames[i] << ": $" << pa[i] << '\n';
+        total += pa[i];
+    }
+    std::cout << "Total: $" << total << '\n';
+}

@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+struct stringy
+{
+    char* str;
+    int ct;
+};
+void show (const stringy p, int times = 0);
+void show (const char* p, int times = 0);
+void set (stringy &st, const char* p);
+
+int main ()
+{
+    stringy beany;
+    char testing[] = "Reality isn't what it used to be.";
+
+    set(beany, testing);
+    show(beany);
+    show(beany, 2);
+    testing[0] = 'D';
+    testing[1] = 'u';
+    show(testing);
+    show(testing, 3);
+    show("Done!");
+
+    delete []beany.str;
+    return 0;
+}
+
+void show (const stringy p, int times)
+{
+    if (times)
+    {
+        for (;times > 0; times--)
+            cout << p.str << endl;
+    }
+    else
+        cout << p.str << endl;
+}
+
+void show (const char* p, int times)
+{
+    if (times)
+    {
+        for (;times > 0; times--)
+            cout << p << endl;
+    }
+    else
+        cout << p << endl;
+}
+
+void set (stringy &st, const char* p)
+{
+    st.ct = strlen(p);
+    char* p2 = new char[st.ct];
+    strcpy(p2, p);
+    st.str = p2;
+}

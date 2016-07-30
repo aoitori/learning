@@ -1,0 +1,30 @@
+#include <iostream>
+
+double harmonic (double x, double y);
+int main ()
+{
+    using namespace std;
+    double x, y;
+
+    cout << "Enter pairs of numbers to calculate: ";
+    while ( cin >> x >> y)
+    {
+        if ( x == 0 || y == 0)
+        {
+            cout << "Program terminated.\n";
+            return 0;
+        }
+        else
+        {
+            cin.get();
+            cout << "The harmonic mean of " << x << " and " << y << " is " << harmonic(x, y) << endl;
+            cout << "Next two numbers for calculating: ";
+        }
+    };
+    return 0;
+}
+
+double harmonic (double x, double y)
+{
+    return  2.0 * x * y / ( x + y);
+}

@@ -1,0 +1,57 @@
+#include <iostream>
+const int SIZE = 11;
+void input (double arr[], int SIZE);
+void display ( const double *arr);
+double average ( const double *arr);
+
+int main ()
+{
+    double a[SIZE];
+    input(a, SIZE);
+    display(a);
+
+    std::cout << "Average: " << average(a) << std::endl;
+    return 0;
+}
+
+void input (double arr[], int SIZE)
+{
+    using namespace std;
+    cout << "Enter 10 golf scores (q to quit): ";
+    for (int i = 0; i < 10; ++i)
+    {
+        cin >> arr[i];
+        if ( arr[i] == 'q')
+        {
+            arr[i] = '\0';
+            break;
+        }
+    }
+    arr[10] = '\0';
+
+}
+
+void display ( const double *arr)
+{
+    int i = 0;
+    std::cout << "Your entered: ";
+    while ( *(arr+i))
+    {
+        std::cout << *(arr+i) << " ";
+        ++i;
+    }
+    std::cout << std::endl;
+}
+
+double average ( const double *arr)
+{
+    int i = 0;
+    double re = 0;
+    while ( *(arr+i))
+    {
+        re += *(arr+i);
+        ++i;
+    }
+
+    return re / i;
+}

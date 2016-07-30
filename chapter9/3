@@ -1,0 +1,41 @@
+#include <iostream>
+#include <new>
+#include <cstring>
+struct chaff
+{
+    char dross[20];
+    int slag;
+};
+const int Buf = 512;
+const int N = 2;
+char buffer[Buf];
+void setchaff (chaff* p);
+int main()
+{
+    using std::cout;
+    using std::endl;
+    cout << "Address: " << &buffer << endl;
+    chaff *p = new (buffer) chaff[2];
+    chaff *p2 = new chaff;
+    cout << "Address p2: " << &p2 << endl;
+    strcpy(p->dross, "one");
+    p->slag = 2;
+    strcpy(p[1].dross, "two");
+    p[1].slag = 3;
+    setchaff (p2);
+    for (int i = 0; i < 2; ++i)
+    {
+        cout << "Dross: " << p[i].dross
+             << "\nSlag: " << p[i].slag << endl;
+        cout << "Address #" << i+1 << ": "
+             << &p[i] << endl;
+    }
+    cout << p2->dross << "; " << p2->slag << endl;
+    cout << &p;
+    return 0;
+}
+void setchaff (chaff* p)
+{
+    strcpy(p->dross, "third");
+    p->slag = 4;
+}

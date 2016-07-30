@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+void print (const std::string &s, int n = 0);
+int counter = 0;
+
+int main ()
+{
+    using namespace std;
+    string s;
+    int i;
+
+    cout << "Enter: ";
+    getline(cin, s);
+    print(s);
+    cout << "#2: ";
+    print(s, 5);
+    cout << "#3: ";
+    print(s, 100);
+    cout << "#4: ";
+    print(s, 0);
+    cout << "#5: ";
+    print(s);
+
+    return 0;
+}
+
+void print(const std::string &s, int n)
+{
+    counter++;
+    if (n >0)
+    {
+        for (int i = counter; i > 0; i--)
+            std::cout << s << std::endl;
+    }
+    else
+        std::cout << s << std::endl;
+}
