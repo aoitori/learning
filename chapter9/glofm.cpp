@@ -1,9 +1,5 @@
 #include <iostream>
 #include "golf.h"
-void setgolf (golf &g, const char* name, int hc);
-int setgolf (golf &g);
-void handicap (golf &g, int hc);
-void showgolf(const golf &g);
 
 int main ()
 {
@@ -14,7 +10,7 @@ int main ()
     showgolf(ann);
 
     golf andy[Len];
-    for (int i = 0; 0 < Len; ++i)
+    for (int i = 0; i < Len; ++i)
     {
         if (!setgolf(andy[i]))
         {
