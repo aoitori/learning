@@ -141,7 +141,7 @@ ostream & operator<<(ostream & os, const String & st)
 String operator+(const String &st1, const String &st2)
 {
     int tlen = strlen(st1.str) + strlen(st2.str) + 1;
-    char tstr[tlen];
+    char* tstr = new char[tlen];
     strcpy(tstr, st1.str);
     strcat(tstr, st2.str);
     return String(tstr);
@@ -150,7 +150,7 @@ String operator+(const String &st1, const String &st2)
 String operator+(const char *ch, const String &st)
 {
     int tlen = strlen(ch) + strlen(st.str) + 1;
-    char tstr[tlen];
+    char* tstr = new char[tlen];
     strcpy(tstr, ch);
     strcat(tstr, st.str);
     return String(tstr);
