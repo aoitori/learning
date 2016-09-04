@@ -7,7 +7,8 @@ Port::Port(const char* br, int b, const char* st)
     brand = new char [(strlen(br)+1)];
     strcpy(brand, br);
     bottles = b;
-    strncpy(style, st, 20);
+    strncpy(style, st, 19);
+    style[19] = '\0';
 }
 
 Port::Port(const Port &p)
@@ -15,7 +16,8 @@ Port::Port(const Port &p)
     brand = new char [(strlen(p.brand)+1)];
     strcpy(brand, p.brand);
     bottles = p.bottles;
-    strncpy(style, p.style, 20);
+    strncpy(style, p.style, 19);
+    style[19] = '\0';
 }
 
 Port & Port::operator=(const Port &p)
@@ -26,7 +28,8 @@ Port & Port::operator=(const Port &p)
     brand = new char [(strlen(p.brand)+1)];
     strcpy(brand, p.brand);
     bottles = p.bottles;
-    strncpy(style, p.style, 20);
+    strncpy(style, p.style, 19);
+    style[19] = '\0';
     return *this;
 }
 
