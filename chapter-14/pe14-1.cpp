@@ -1,6 +1,6 @@
 // pe14-1.cpp -- using Wine calss with containment
 
-#include "winec.h"
+#include "winec.h" // winec2.h for exercise14-2
 
 int main (void)
 {
